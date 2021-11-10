@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./App.css";
 
-var keyFramesOrange = [
+const keyFramesOrange = [
   { background: "#FFA500", transform: "translateY(10px)" },
   { background: "white" },
   { background: "#FFA500", transform: "translateY(0px)" },
@@ -9,7 +9,7 @@ var keyFramesOrange = [
   { background: "#FFA500", transform: "translateY(-10px)" },
 ];
 
-var keyFramesGreen = [
+const keyFramesGreen = [
   { background: "#90EE90", transform: "translateY(-12px)" },
   { background: "white" },
   { background: "#90EE90", transform: "translateY(0px)" },
@@ -17,7 +17,7 @@ var keyFramesGreen = [
   { background: "#90EE90", transform: "translateY(12px)" },
 ];
 
-var keyFramesBlue = [
+const keyFramesBlue = [
   { background: "#87CEFA", transform: "translateY(15px)" },
   { background: "white" },
   { background: "#87CEFA", transform: "translateY(0px)" },
@@ -25,7 +25,7 @@ var keyFramesBlue = [
   { background: "#87CEFA", transform: "translateY(-15px)" },
 ];
 
-var keyFramesPink = [
+const keyFramesPink = [
   { background: "#FFB6C1", transform: "translateY(-12px)" },
   { background: "white" },
   { background: "#FFB6C1", transform: "translateY(0px)" },
@@ -33,7 +33,7 @@ var keyFramesPink = [
   { background: "#FFB6C1", transform: "translateY(12px)" },
 ];
 
-var keyFramesYellow = [
+const keyFramesYellow = [
   { background: "#FFFF00", transform: "translateY(10px)" },
   { background: "white" },
   { background: "#FFFF00", transform: "translateY(0px)" },
@@ -41,7 +41,7 @@ var keyFramesYellow = [
   { background: "#FFFF00", transform: "translateY(-10px)" },
 ];
 
-var keyProps = {
+const keyProps = {
   duration: 1000,
   iterations: Infinity,
   direction: "alternate",
@@ -50,11 +50,11 @@ var keyProps = {
 function App() {
   useEffect(() => {
 
-    var shapeOrange = document.querySelector(".orange");
-    var shapeGreen = document.querySelector(".green");
-    var shapeBlue = document.querySelector(".blue");
-    var shapePink = document.querySelector(".pink");
-    var shapeYellow = document.querySelector(".yellow");
+    const shapeOrange = document.querySelector(".orange");
+    const shapeGreen = document.querySelector(".green");
+    const shapeBlue = document.querySelector(".blue");
+    const shapePink = document.querySelector(".pink");
+    const shapeYellow = document.querySelector(".yellow");
 
     function animation() {
       shapeOrange.animate(keyFramesOrange, keyProps);
