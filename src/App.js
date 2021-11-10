@@ -2,54 +2,65 @@ import { useEffect } from "react";
 import "./App.css";
 
 const keyFramesOrange = [
-  { background: "#FFA500", transform: "translateY(10px)" },
+  { background: "#FFA500", transform: "translateY(5px)" },
   { background: "white" },
   { background: "#FFA500", transform: "translateY(0px)" },
   { background: "white" },
-  { background: "#FFA500", transform: "translateY(-10px)" },
+  { background: "#FFA500", transform: "translateY(-5px)" },
 ];
 
 const keyFramesGreen = [
-  { background: "#90EE90", transform: "translateY(-12px)" },
+  { background: "#90EE90", transform: "translateY(-6px)" },
   { background: "white" },
   { background: "#90EE90", transform: "translateY(0px)" },
   { background: "white" },
-  { background: "#90EE90", transform: "translateY(12px)" },
+  { background: "#90EE90", transform: "translateY(6px)" },
 ];
 
 const keyFramesBlue = [
-  { background: "#87CEFA", transform: "translateY(15px)" },
+  { background: "#87CEFA", transform: "translateY(8px)" },
   { background: "white" },
   { background: "#87CEFA", transform: "translateY(0px)" },
   { background: "white" },
-  { background: "#87CEFA", transform: "translateY(-15px)" },
+  { background: "#87CEFA", transform: "translateY(-8px)" },
 ];
 
 const keyFramesPink = [
-  { background: "#FFB6C1", transform: "translateY(-12px)" },
+  { background: "#FFB6C1", transform: "translateY(-6px)" },
   { background: "white" },
   { background: "#FFB6C1", transform: "translateY(0px)" },
   { background: "white" },
-  { background: "#FFB6C1", transform: "translateY(12px)" },
+  { background: "#FFB6C1", transform: "translateY(6px)" },
 ];
 
 const keyFramesYellow = [
-  { background: "#FFFF00", transform: "translateY(10px)" },
+  { background: "#FFFF00", transform: "translateY(5px)" },
   { background: "white" },
   { background: "#FFFF00", transform: "translateY(0px)" },
   { background: "white" },
-  { background: "#FFFF00", transform: "translateY(-10px)" },
+  { background: "#FFFF00", transform: "translateY(-5px)" },
 ];
 
 const keyProps = {
-  duration: 1000,
+  duration: 800,
   iterations: Infinity,
   direction: "alternate",
+  easing: "ease-in-out",
+};
+
+var RingFrames = [
+  { transform: "rotate(0deg)" },
+  { transform: "rotate(360deg)" },
+];
+var RingProps = {
+  duration: 2000,
+  iterations: Infinity,
+  easing: "ease",
 };
 
 function App() {
   useEffect(() => {
-
+    const shapeRing = document.querySelector(".circle");
     const shapeOrange = document.querySelector(".orange");
     const shapeGreen = document.querySelector(".green");
     const shapeBlue = document.querySelector(".blue");
@@ -57,6 +68,7 @@ function App() {
     const shapeYellow = document.querySelector(".yellow");
 
     function animation() {
+      shapeRing.animate(RingFrames, RingProps);
       shapeOrange.animate(keyFramesOrange, keyProps);
       shapeGreen.animate(keyFramesGreen, keyProps);
       shapeBlue.animate(keyFramesBlue, keyProps);
@@ -65,17 +77,17 @@ function App() {
     }
 
     return animation();
-
   }, []);
 
   return (
     <>
-      <div class="container">
-        <div class="center orange"></div>
-        <div class="center green"></div>
-        <div class="center blue"></div>
-        <div class="center pink"></div>
-        <div class="center yellow"></div>
+      <div className="container">
+        <div className="circle"></div>
+        <div className="center orange"></div>
+        <div className="center green"></div>
+        <div className="center blue"></div>
+        <div className="center pink"></div>
+        <div className="center yellow"></div>
       </div>
     </>
   );
