@@ -24,8 +24,8 @@ left: 53%;
 }
 
 .center {
-  margin: 0;
   position: absolute;
+  margin: 0;
   top: 50%;
   width: 10px;
   height: 10px;
