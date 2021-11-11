@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import useWebAnimations from "@wellyshen/use-web-animations";
 import "./App.css";
 
 const keyFramesOrange = [
@@ -48,46 +48,57 @@ const keyProps = {
   easing: "ease-in-out",
 };
 
-var RingFrames = [
+const RingFrames = [
   { transform: "rotate(0deg)" },
   { transform: "rotate(360deg)" },
 ];
-var RingProps = {
+
+const RingProps = {
   duration: 2000,
   iterations: Infinity,
   easing: "ease",
 };
 
 function App() {
-  useEffect(() => {
-    const shapeRing = document.querySelector(".circle");
-    const shapeOrange = document.querySelector(".orange");
-    const shapeGreen = document.querySelector(".green");
-    const shapeBlue = document.querySelector(".blue");
-    const shapePink = document.querySelector(".pink");
-    const shapeYellow = document.querySelector(".yellow");
+  const animateOrangeBall = useWebAnimations({
+    keyframes: keyFramesOrange,
+    timing: keyProps,
+  });
 
-    function animation() {
-      shapeRing.animate(RingFrames, RingProps);
-      shapeOrange.animate(keyFramesOrange, keyProps);
-      shapeGreen.animate(keyFramesGreen, keyProps);
-      shapeBlue.animate(keyFramesBlue, keyProps);
-      shapePink.animate(keyFramesPink, keyProps);
-      shapeYellow.animate(keyFramesYellow, keyProps);
-    }
+  const animateGreenBall = useWebAnimations({
+    keyframes: keyFramesGreen,
+    timing: keyProps,
+  });
 
-    return animation();
-  }, []);
+  const animateBlueBall = useWebAnimations({
+    keyframes: keyFramesBlue,
+    timing: keyProps,
+  });
 
+  const animatePinkBall = useWebAnimations({
+    keyframes: keyFramesPink,
+    timing: keyProps,
+  });
+
+  const animateYellowBall = useWebAnimations({
+    keyframes: keyFramesYellow,
+    timing: keyProps,
+  });
+
+  const animateRing = useWebAnimations({
+    keyframes: RingFrames,
+    timing: RingProps,
+  });
+  
   return (
     <>
       <div className="container">
-        <div className="circle"></div>
-        <div className="center orange"></div>
-        <div className="center green"></div>
-        <div className="center blue"></div>
-        <div className="center pink"></div>
-        <div className="center yellow"></div>
+        <div className="circle" ref={animateRing.ref}/>
+        <div className="center orange" ref={animateOrangeBall.ref}/>
+        <div className="center green" ref={animateGreenBall.ref}/>
+        <div className="center blue" ref={animateBlueBall.ref}/>
+        <div className="center pink" ref={animatePinkBall.ref}/>
+        <div className="center yellow" ref={animateYellowBall.ref}/>
       </div>
     </>
   );
